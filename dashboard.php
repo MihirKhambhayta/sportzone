@@ -80,7 +80,8 @@
             text-decoration: none;
             font-weight: bold;
         }
-      footer {
+      footer
+       {
         background-color: #343a40; /* Dark background */
         color: white;
         padding: 20px;
