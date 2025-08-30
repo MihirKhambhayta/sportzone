@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.main {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 10px 20px;
+    box-shadow: 0 0 20px burlywood;
+    width: 400px;
+    height: auto;
+    text-align: center;
+}
+
+h1 {
+    background: #9986ec;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #555;
+    font-weight: bold;
+}
+
+input, select {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: none;
+    color: white;
+    background-color: #6f67e2;
+    width: 100%;
+    font-size: 16px;
+}
+</style>
+</head>
+<body>
+
+<div class="main">
+    <h1>Registration</h1>
+
+    <form id="registration" action="registration.php" method="post">
+
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" name="firstname" placeholder="Enter your First Name" required>
+
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lastname" name="lastname" placeholder="Enter your Last Name" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+
+        <label for="emailaddress">Email Address:</label>
+        <input type="email" id="emailaddress" name="emailaddress" placeholder="Enter your Email Address"  required>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" placeholder="10-digit number"  required>
+
+        <label for="city">City:</label>
+        <select id="city" name="city" required>
+            <option disabled selected>---Select Your City---</option>
+            <option>Ahmedabad</option>
+            <option>Surat</option>
+            <option>Vadodara</option>
+            <option>Bhavnagar</option>
+            <option>Rajkot</option>
+        </select>
+
+        <div class="bt">
+            <button id="submit" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+
+<script>
+  const form = document.getElementById('registration');
+
+  form.addEventListener('submit', function (e) {
+    const emailaddress = form.emailaddress.value;
+    const password = form.password.value;
+    const phone = form.phone.value;
+
+    const phonePattern = /^[0-9]{10}$/;
+    const emailPattern = "/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/";
+    
+
+    if (!phonePattern.test(phone)) {
+      e.preventDefault();
+      alert("Phone number must be 10 digits.");
+      return;
+    }
+
+    if (password.length < 6) {
+      e.preventDefault();
+      alert("Password must be at least 6 characters.");
+      return;
+    }
+
+
+     if (city === "") {
+      e.preventDefault();
+      alert("Please select your city.");
+      return;
+    }
+
+
+
+  });
+</script>
+
+</body>
+</html>
