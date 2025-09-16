@@ -188,6 +188,7 @@
 
                 if (response === 'success') {
                     document.getElementById('responseMessage').innerHTML = '<p class="success">Your message has been sent successfully! We\'ll get back to you soon.</p>';
+                    document.getElementById('contactForm').reset();
                 } else {
                     document.getElementById('responseMessage').innerHTML = '<p class="error">There was an issue sending your message. Please try again later.</p>';
                 }
