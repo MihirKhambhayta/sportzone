@@ -100,11 +100,30 @@ $(function(){
     });
   });
 
-  $(document).on('click', '.deleteBtn', function(){
-    if(confirm('Delete this user?')) {
-      $.post('ajax.php', { action: 'delete', id: $(this).data('id') }, loadUsers);
+   $(document).on('click', '.deleteBtn', function(e) {
+    e.preventDefault(); // Prevent default behavior (like submitting a form or following a link)
+
+    if (confirm('Are you sure you want to delete this user?')) {
+        var userId = $(this).data('id');
+
+        $.ajax({
+            url: 'ajax.php',
+            type: 'POST',
+            data: { action: 'delete', id: userId },
+            success: function(response) {
+                // Optionally show success message
+                // alert("User deleted!");
+
+                // Reload the user list (assuming loadUsers() is your function)
+                loadUsers();
+            },
+            error: function(xhr, status, error) {
+                console.error("AJAX Error:", error);
+            }
+        });
     }
   });
+
 
   loadUsers();
 });
